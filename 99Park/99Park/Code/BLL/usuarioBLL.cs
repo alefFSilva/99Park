@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using _99Park.Code.DTO;
 using _99Park.Code.DAL;
+using System.Windows.Forms;
 
 namespace _99Park.Code.BLL
 {
@@ -12,8 +13,10 @@ namespace _99Park.Code.BLL
     {
         public bool realizaLogin(usuarioDTO oUsuarioDTO)
         {
-
-            acessoAoBanco.abreConexao();
+            acessoAoBanco.FechaConexao();
+            acessoAoBanco.conexao();
+            acessoAoBanco.AbreConexao();
+            MessageBox.Show("Primeiro Teste com conexão");
 
             return true;
         }

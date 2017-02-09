@@ -11,17 +11,20 @@ namespace _99Park.Code.DAL
     class acessoAoBanco
     {
 
-        public static SqlConnection sqlconnection = new SqlConnection();
+        
         public static SqlParameter param;
         public static SqlCommand command;
+        public static string strConexao = Properties.Settings.Default.strConexao;
+        public static SqlConnection sqlconnection = new SqlConnection(strConexao);
+      //  sqlconnection = new SqlConnection(strConexao);
 
         public static SqlConnection conexao(){
 
             try
             {
-                string strConexao = Properties.Settings.Default.strConexao;
+                
 
-                sqlconnection = new SqlConnection(strConexao);
+                
 
                 if (sqlconnection.State == ConnectionState.Closed)
                 {
@@ -38,7 +41,13 @@ namespace _99Park.Code.DAL
 
         public static void AbreConexao()
         {
-            sqlconnection.Open();
+            if (sqlconnection.State == ConnectionState.Open)
+            {
+                sqlconnection.Close();
+            }
+            else {
+                sqlconnection.Open();
+            }
         }
 
         public static void FechaConexao()
