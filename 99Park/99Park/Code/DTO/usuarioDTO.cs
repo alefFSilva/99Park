@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace _99Park.Code.DTO
 {
-    class usuarioDTO
+    class UsuarioDTO
     {
         public string nome     { get; set; }
-        public string usuario    { get; set; }
+        public string usuario   { get; set; }
         public string senha    { get; set; }
         public string email    { get; set; }
         public char   tipo     { get; set; }

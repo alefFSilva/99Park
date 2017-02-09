@@ -9,13 +9,12 @@ using System.Windows.Forms;
 
 namespace _99Park.Code.BLL
 {
-    class usuarioBLL
+    class UsuarioBLL
     {
-        public bool realizaLogin(usuarioDTO oUsuarioDTO)
+        public bool realizaLogin(UsuarioDTO oUsuarioDTO)
         {
-            acessoAoBanco.FechaConexao();
-            acessoAoBanco.conexao();
-            acessoAoBanco.AbreConexao();
+            AcessoAoBanco.FechaConexao();
+            AcessoAoBanco.AbreConexao();
 
             MessageBox.Show("Primeiro Teste com conexão");
 

@@ -8,36 +8,18 @@ using System.Threading.Tasks;
 
 namespace _99Park.Code.DAL
 {
-    class acessoAoBanco
+    class AcessoAoBanco
     {
 
         
-        public static SqlParameter param;
-        public static SqlCommand command;
-        public static string strConexao = Properties.Settings.Default.strConexao;
-        public static SqlConnection sqlconnection = new SqlConnection(strConexao);
-      //  sqlconnection = new SqlConnection(strConexao);
+        private static SqlParameter param;
+        private static string strConexao = Properties.Settings.Default.strConexao;
+        private static SqlConnection sqlconnection = new SqlConnection(strConexao);
+        private static SqlCommand procedure = new SqlCommand
+        {
+            CommandType = CommandType.StoredProcedure
+        };
 
-        public static SqlConnection conexao(){
-
-            try
-            {
-                
-
-                
-
-                if (sqlconnection.State == ConnectionState.Closed)
-                {
-                    sqlconnection.Open();
-                }
-
-                return sqlconnection;
-            }catch(Exception ex)
-            {
-                throw ex;
-            }
-            
-            }
 
         public static void AbreConexao()
         {
@@ -55,7 +37,7 @@ namespace _99Park.Code.DAL
             sqlconnection.Close();
         }
 
-        public static void AdicionarParmetros(string pnome, SqlDbType ptipo, int ptamanho, object pvalor)
+        public static void AdicionarParametro(string pnome, SqlDbType ptipo, int ptamanho, object pvalor)
         {
             param = new SqlParameter();
             param.ParameterName = pnome;
@@ -64,12 +46,29 @@ namespace _99Park.Code.DAL
             param.Value = pvalor;
         }
 
-        public static void LimparParametros()
-        {
-            command.Parameters.Clear();
+        public static void LimparParametro()
+        {          
+            procedure.Parameters.Clear();
         }
 
-       // public DataTable ExecutaConsulta(string sql)
+        public static void AdicionaParametros(string pNome, SqlDbType pTipo, object pValor )
+        {
+            SqlParameter param = new SqlParameter
+            {
+                ParameterName = pNome,
+                SqlDbType = pTipo,
+                Value = pValor
+            };
+            procedure.Parameters.Add(param);
+
+        }
+
+       //public static DataTable ExecutaConsulta(string pProcedure)
+       // {
+
+
+       //     //return DataTable
+       // }
 
     }
 }

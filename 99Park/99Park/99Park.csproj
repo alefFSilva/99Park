@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\BLL\usuarioBLL.cs" />
-    <Compile Include="Code\DAL\acessoAoBanco.cs" />
-    <Compile Include="Code\DTO\usuarioDTO.cs" />
+    <Compile Include="Code\BLL\UsuarioBLL.cs" />
+    <Compile Include="Code\DAL\AcessoAoBanco.cs" />
+    <Compile Include="Code\DTO\UsuarioDTO.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
